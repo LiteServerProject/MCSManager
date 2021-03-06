@@ -20,6 +20,6 @@ let info = [os.type(), os.arch(), os.hostname(), os.release()].join(" ");
 module.exports = {
   system: info,
   root: process.cwd(),
-  verisonA: verisonA,
+  verisonA: `LiteServer定制版 基于${verisonA}`,
   verisonB: verisonB
 };
