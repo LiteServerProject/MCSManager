@@ -1,23 +1,17 @@
-<div id="" class="OneContainer">
+<div id="LiteServerCloudNews" class="OneContainer">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-md-8">
       <div class="Panel">
-        <div class="PanelTitle">技术支持</div>
-        <div class="PanelBody">
-          <p>程序控制面板是 Mcserver Manager 8 提供的技术支持服务</p>
-          <p>- 您当前的提供商提供服务</p>
+        <div class="PanelTitle">LiteServer Cloud</div>
+        <div class="PanelBody" style="max-height: 90vh">
+          <p>当前管理面板是 LiteServer Project 提供的技术支持服务</p>
+          <div class="news" v-for="item of items">
+            <p class="color-gray" v-text="item.title"></p>
+            <p v-text="item.msg"></p>
+          </div>
         </div>
       </div>
     </div>
-    <!--如果有需要，您可以自己修改-->
-    <!--<div class="col-sm-6">
-			<div class="Panel">
-				<div class="PanelTitle">宿主机</div>
-				<div class="PanelBody">
-					<p>如有需要，这里可能会有宿主机服务商提供的信息.</p>
-				</div>
-			</div>
-		</div>-->
   </div>
 </div>
 
@@ -25,6 +19,17 @@
   MI.rListener("onload", function () {
     // 定义页面地址
     TOOLS.definePage("template/gen_about", "genuser/home", "");
+
+    RES.ajax({
+      type: "GET",
+      url: "public/cloud.json",
+      success: function (result) {
+        new Vue({
+          el: '#LiteServerCloudNews',
+          data: result
+        })
+      }
+    })
   });
 
   MI.rListener("onend", function () {});

@@ -20,7 +20,7 @@
     },
     {
       class: "glyphicon-equalizer",
-      name: "技术支持",
+      name: "LiteServer Cloud",
       link: "./template/gen_about.html",
       api: null,
       select: false
@@ -60,8 +60,15 @@
     },
     {
       class: "glyphicon-floppy-open",
-      name: "服务",
+      name: "最新动态",
       link: "./template/feelback.html",
+      api: null,
+      select: false
+    },
+    {
+      class: "glyphicon-equalizer",
+      name: "LiteServer Cloud",
+      link: "./template/gen_about.html",
       api: null,
       select: false
     }
