@@ -196,12 +196,12 @@
             theTime1 = parseInt(theTime1 % 60);
           }
         }
-        var result = "";
+        var result = `${parseInt(theTime)}秒`;
         if (theTime1 > 0) {
-          result = "" + parseInt(theTime1) + "分";
+          result = `${parseInt(theTime1)}分${result}`
         }
         if (theTime2 > 0) {
-          result = "" + parseInt(theTime2) + "时" + result;
+          result = `${parseInt(theTime2)}时${result}`
         }
         return result;
       };
