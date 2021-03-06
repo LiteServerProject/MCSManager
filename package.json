@@ -25,6 +25,7 @@
     "SaigyoujiYuyuko233"
   ],
   "dependencies": {
+    "@wwa/statvfs": "^1.1.8",
     "body-parser": "^1.17.2",
     "colors": "^1.1.2",
     "compressing": "^1.5.0",

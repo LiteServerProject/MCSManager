@@ -1,0 +1,3 @@
+[submodule "mcsm-patch"]
+	path = mcsm-patch
+	url = git@github.com:LiteServerProject/mcsm-patch.git
