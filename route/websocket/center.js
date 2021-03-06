@@ -5,8 +5,11 @@ const response = require("../../helper/Response");
 const serverModel = require("../../model/ServerModel");
 const permssion = require("../../helper/Permission");
 const userModel = require("../../model/UserModel");
-const os = require("os");
 const mversion = require("../../helper/version");
+
+const { DataCollector } = require('../../mcsm-patch/collector');
+
+const customCollector = new DataCollector(1000);
 
 const MB_SIZE = 1024 * 1024;
 let serverM = serverModel.ServerManager();
@@ -21,9 +24,8 @@ counter.initData(() => {
   counter.set("csrfCounter", 0);
 });
 
-const osUtils = require("os-utils");
 //系统CPU
-var cacheCPU = 0;
+let cacheCPU = 0;
 let cacheSystemInfo = null;
 let usage = process.memoryUsage();
 
@@ -34,10 +36,10 @@ MCSERVER.logCenter.initLogData("RAM", 24);
 // 数据缓存，以避免频繁请求带来的损耗
 setInterval(function () {
   // CPU 值缓存
-  osUtils.cpuUsage(function (v) {
-    cacheCPU = (v * 100).toFixed(2);
-    MCSERVER.dataCenter.cacheCPU = cacheCPU;
-  });
+  cacheCPU = (customCollector.getCPUPercent() * 100).toFixed(2);
+  MCSERVER.dataCenter.cacheCPU = cacheCPU;
+  MCSERVER.dataCenter.cacheMemoryUsage = (customCollector.getMemPercent() * 100).toFixed(2);
+
   let onliec = 0;
   let sockec = 0;
   let banipc = 0;
@@ -59,10 +61,11 @@ setInterval(function () {
     rss: (usage.rss / MB_SIZE).toFixed(1),
     heapTotal: (usage.heapTotal / MB_SIZE).toFixed(1),
     heapUsed: (usage.heapUsed / MB_SIZE).toFixed(1),
-    sysTotalmem: (os.totalmem() / MB_SIZE).toFixed(1),
-    sysFreemem: (os.freemem() / MB_SIZE).toFixed(1),
+    sysTotalmem: (customCollector.getMemTotal() / MB_SIZE).toFixed(1),
+    sysFreemem: (customCollector.getMemFree() / MB_SIZE).toFixed(1),
     cpu: cacheCPU,
-    uptime: os.uptime(),
+    cpuCores: customCollector.getCPUCores(),
+    uptime: customCollector.getUptime(),
     //more
     serverCounter: serverM.getServerCounter(),
     runServerCounter: serverM.getRunServerCounter(),
@@ -80,10 +83,9 @@ setInterval(function () {
     system: mversion.system
   };
 
-  let useMemBai = ((os.freemem() / os.totalmem()) * 100).toFixed(0);
   //压入记录器
-  MCSERVER.logCenter.pushLogData("CPU", tools.getMineTime(), parseInt(cacheCPU));
-  MCSERVER.logCenter.pushLogData("RAM", tools.getMineTime(), 100 - useMemBai);
+  MCSERVER.logCenter.pushLogData("CPU", tools.getMineTime(), (cacheCPU / customCollector.getCPUCores()).toFixed(1));
+  MCSERVER.logCenter.pushLogData("RAM", tools.getMineTime(), (customCollector.getMemPercent() * 100).toFixed(1));
 
   setTimeout(() => counter.save(), 0); //让其异步地去保存
 }, MCSERVER.localProperty.data_center_times);
