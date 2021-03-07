@@ -1,20 +1,21 @@
 ![doc_logo.png](/public/common/doc_logo.png)
-  
-[![Status](https://img.shields.io/badge/npm-v6.9.0-blue.svg)](https://www.npmjs.com/)
-[![Status](https://img.shields.io/badge/node-v10.16.0-blue.svg)](https://nodejs.org/en/download/)
-[![Status](https://travis-ci.org/Suwings/MCSManager.svg?branch=master)](https://travis-ci.org/Suwings/MCSManager)
-[![Status](https://img.shields.io/badge/License-MIT-red.svg)](https://github.com/Suwings/MCSManager)
 
+[![Status](https://img.shields.io/badge/npm-v7.6.1-blue.svg)](https://www.npmjs.com/)
+[![Status](https://img.shields.io/badge/node-v12.20.0-blue.svg)](https://nodejs.org/en/download/)
+[![Status](https://travis-ci.org/Suwings/MCSManager.svg?branch=master)](https://travis-ci.org/Suwings/MCSManager)
+[![Status](https://img.shields.io/badge/License-MIT-red.svg)](https://github.com/LiteServerProject/MCSManager)
 
 简单，易用，多实例，轻量级的 Minecraft Server 控制面板 
 
-
-
-[中文简体](https://github.com/Suwings/MCSManager) | [中文繁體](README-traditional.md) |  [API 文档](https://github.com/Suwings/MCSManager/wiki/API-Documentation)  | [二次开发参考文档](https://github.com/Suwings/MCSManager/wiki/Development_Document)
+[中文简体](https://github.com/LiteServerProject/MCSManager) |  [API 文档](https://github.com/Suwings/MCSManager/wiki/API-Documentation)  | [二次开发参考文档](https://github.com/Suwings/MCSManager/wiki/Development_Document)
 
 <br />
 
-**本项目 [赞助者名单](https://docs.qq.com/sheet/DYWJNVXhib0dtamh2?c=B3A0A0)**
+LiteServer Project ❤ MCSManager
+-----------
+
+[LiteServer Project](https://github.com/LiteServerProject) 已成为 [MCSManager](https://travis-ci.org/Suwings/MCSManager) 的金牌赞助商. 感谢 [Suwings](https://github.com/Suwings) 向开源世界的贡献.
+
 <br />
 
 简介
@@ -64,84 +65,20 @@ FTP 无法使用？ | [跳转](https://github.com/Suwings/MCSManager#ftp-%E6%9C%
 其他常见问题 | [查看 Wiki](https://github.com/Suwings/MCSManager/wiki)
 关于HTTP跳转HTTPS的帮助 | [查看 Nginx 301永久重定向 范例](https://github.com/Suwings/MCSManager/wiki/Nginx%E5%85%A8%E5%B1%80301%E6%B0%B8%E4%B9%85%E9%87%8D%E5%AE%9A%E5%90%91)
 
-
 <br />
-
-
-
 
 在 Windows 运行 
 -----------
-对于 Windows 系统，**已整合成直接运行版本，下载即可运行**(建议使用管理员权限运行):
-
-http://mcsm.suwings.top/ (官方站点)
-
-- 前往官方网站下载 Windows 版本即可，双击 `运行.bat` 或 `Start.bat` 文件即可。
+本版本主要用于模板化大规模部署, 因此不适用于Windows平台. 我们不建议也不会测试与Windows平台的兼容性. 若需要在Windows平台运行请参考原版: [Suwings/MCSManager: 在Windows运行](https://github.com/Suwings/MCSManager#%E5%9C%A8-windows-%E8%BF%90%E8%A1%8C)
 
 <br />
-
 
 在 Linux 运行
 -----------
 
-**一行命令快速安装（适用于 Ubuntu/Centos/Debian/Archlinux）**
-
-```bash
-wget -qO- https://gitee.com/Suwingser/MCSManager-installer/raw/master/install.sh | bash
-```
-
-- 执行完成后，使用 `systemctl start mcsm` 即可启动面板服务。
-- 面板代码与运行环境自动安装在 `/opt/` 目录下。
+参考 [lsp-mcsm-base](https://github.com/LiteServerProject/container-images/blob/master/lsp-mcsm-base/Dockerfile) 镜像
 
 <br />
-
-**其他 Linux 发行版安装**
-
-- 若一键安装不起作用，则可以尝试此步骤手动安装。
-
-```bash
-# 切换到安装目录，没有此目录请执行 mkdir /opt/
-cd /opt/
-# 下载运行环境
-wget https://npm.taobao.org/mirrors/node/v12.16.1/node-v12.16.1-linux-x64.tar.gz
-# 解压文件
-tar -zxvf node-v12.16.1-linux-x64.tar.gz
-# 链接程序到环境变量中
-ln -s /opt/node-v12.16.1-linux-x64/bin/node /usr/bin/node
-ln -s /opt/node-v12.16.1-linux-x64/bin/npm /usr/bin/npm
-# 克隆仓库(若没有 git，请安装它，如 apt install -y git)
-git clone https://github.com/suwings/mcsmanager.git
-# 进入目录
-cd mcsmanager/
-# 安装依赖库
-npm install
-# 启动面板
-npm start 
-# 关闭面板使用 Ctrl+C 快捷键即可
-```
-
-- 注意，这种安装方式不会自动注册面板到系统服务（Service），所以必须使用 `screen` 软件来管理。
-- 或者您可以 [点击这里](https://github.com/Suwings/MCSManager/wiki/%E4%BD%BF%E7%94%A8-systemctl-%E7%AE%A1%E7%90%86%E5%99%A8) 来手动配置面板到系统
-
-
-> 关于更多的安装说明，请 [单击这里](https://github.com/Suwings/MCSManager/wiki/Linux-%E4%B8%8B%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3)  
-
-<br />
-
-通过 Docker 启动 MC 服务端 
------------
-
-我们支持面板在 Linux 系统下，配合 Docker 以命令的形式，来创建 Minecraft 服务端所需 Java 环境镜像，并且在容器中启动和关闭你的 Minecraft 服务端。
-
-如果你不会使用，请点击`具体使用方法` 链接，如果你还未安装 Docker 请点击 `安装Docker` 的链接。
-
-**具体使用方法:** [单击跳转](https://github.com/Suwings/MCSManager/blob/gh-pages/Question_1.md)
-
-**安装 Docker:** [单击跳转](https://github.com/Suwings/MCSManager/blob/gh-pages/Question_2.md)
-
-
-<br />
-
 
 项目目录结构
 -----------
@@ -181,15 +118,6 @@ npm start
 
 <br />
 
-
-
-自定义设计
------------
-你可以对前端以及后端进行任何程度的修改，包括版权声明。
-
-
-<br />
-
 FTP 服务
 -----------
 
@@ -205,10 +133,10 @@ FTP 模块默认为关闭状态.开启选项在 property.js 文件中 但不建�
 
 <br />
 
-反向代理 与 SSL
+反向代理 与 HTTPS
 -----------
 
-尽管默认没有 Https ，您可能在公共网络下不太放心，但是我们不传递明文的密码，可以保证你的账号的密码是难以泄露的。
+尽管默认没有 https ，您可能在公共网络下不太放心，但是我们不传递明文的密码，可以保证你的账号的密码是难以泄露的。
 
 具体密码传递过程可参考 [单击这里跳转](https://github.com/Suwings/MCSManager/wiki/%E7%99%BB%E5%BD%95%E5%AF%86%E7%A0%81%E4%BC%A0%E9%80%92%E8%BF%87%E7%A8%8B%E5%9B%BE)
 
@@ -226,13 +154,36 @@ FTP 模块默认为关闭状态.开启选项在 property.js 文件中 但不建�
 
 **反向代理**
 
-后端请通过反向代理完成，或自行修改 Express 初始化 App。
+推荐使用 [Kiritow: image-station/frpc](https://github.com/Kiritow/image-station/tree/master/frpc) 镜像实现反向代理, 以实现反向代理后侧的加密通信.
 
-[Apache 反向代理教程](https://github.com/Suwings/MCSManager/wiki/%E4%BD%BF%E7%94%A8-Apache2.4-%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86)
+Nginx配置HTTPS示例, 包含WebSocket:
 
-[SSL 功能实现示例](https://github.com/Suwings/MCSManager/issues/146)
+```nginx
+server {
+    listen 443 ssl;
+    server_name 服务器域名;
 
-**注意:** [Nginx 反向代理注意](https://github.com/Suwings/MCSManager/issues/22)  | [Apache 反向代理注意](https://github.com/Suwings/MCSManager/issues/34)  | [关于 Caddy 反向代理坑](https://github.com/Suwings/MCSManager/issues/122)
+    # Let's Encrypt 凭据名称
+    ssl_certificate fullchain.pem;
+    ssl_certificate_key privkey.pem;
+    ssl_trusted_certificate chain.pem;
+
+    location ^~ / {
+        proxy_set_header Host 服务器域名;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Real-Port $remote_port;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://127.0.0.1:23333;
+    }
+
+    location ^~ /websocket/ws {
+        proxy_pass http://127.0.0.1:23333;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+```
 
 <br />
 
