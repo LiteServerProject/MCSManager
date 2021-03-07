@@ -67,6 +67,7 @@ const tokenManger = require("./helper/TokenManager");
 const nodeSchedule = require("node-schedule");
 const Schedule = require("./helper/Schedule");
 const NewsCenter = require("./model/NewsCenter");
+const CloudCenter = require("./model/CloudCenter");
 
 //控制台颜色
 const colors = require("colors");
@@ -299,6 +300,8 @@ nodeSchedule.scheduleJob("59 59 23 * * *", function () {
 });
 //重启自动获取一次
 NewsCenter.requestNews();
+
+CloudCenter.requestCloudText();
 
 //程序退出信号处理
 require("./core/procexit");
