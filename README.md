@@ -59,7 +59,6 @@ Linux 下面板如何后台运行？ | [参考方法](https://github.com/Suwings
 如何修改面板默认端口？ | `property.js` 文件
 如何配置反向代理？ | [Apache 配置参考教程](https://github.com/Suwings/MCSManager/wiki/%E4%BD%BF%E7%94%A8-Apache2.4-%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86)
 配好反向代理却无法使用？ | [Apache](https://github.com/Suwings/MCSManager/issues/34) [Nginx](https://github.com/Suwings/MCSManager/issues/22) [宝塔上的Nginx](https://github.com/Suwings/MCSManager/wiki/%E5%85%B3%E4%BA%8E%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E7%9A%84-Nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%BB%A5%E5%8F%8ASSL%E8%AF%81%E4%B9%A6%E9%83%A8%E7%BD%B2)
-FTP 无法使用？ | [跳转](https://github.com/Suwings/MCSManager#ftp-%E6%9C%8D%E5%8A%A1)
 反代后文件管理偶尔失效? | 请检查反代机器的防火墙是否拦截
 我能修改登录页面吗？| [修改教程](https://github.com/Suwings/MCSManager/wiki/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2)
 其他常见问题 | [查看 Wiki](https://github.com/Suwings/MCSManager/wiki)
@@ -104,7 +103,6 @@ FTP 无法使用？ | [跳转](https://github.com/Suwings/MCSManager#ftp-%E6%9C%
 | **core/DataModel.js**            |数据持久化模型，几乎是所有的配置的 I/O 模型|
 | **model/**                      |模型层，用于提供控制器与服务端，用户操作，也提供设计模式模型|
 | **helper/**                     |业务逻辑辅助层，用于辅助和重复利用业务逻辑|
-| **ftpd/**                       |FTP 独立模块，其中 ftpserver.js 已经实现了抽象 ftpServerInterface 接口|
 | **onlinefs/**                    |文件管理独立模块 ([Suwings/IndependentFileManager](https://github.com/Suwings/IndependentFileManager))|
 
 <br />
@@ -121,15 +119,7 @@ FTP 无法使用？ | [跳转](https://github.com/Suwings/MCSManager#ftp-%E6%9C%
 FTP 服务
 -----------
 
-FTP 模块默认为关闭状态.开启选项在 property.js 文件中 但不建议使用
-
-采用被动传输模式，传输命令默认使用 `10022`(可更改) 端口；
-
-传输数据需要一个端口段，默认是 `20010` - `20100`；
-
-为确保 FTP 服务正常使用，请配置好您的防火墙设置，对这些端口范围进行开放。
-
-> 此功能未来版本有可能会删除，使用已有的在线文件管理完全代替。
+本版本已完全移除ftpd相关代码, 推荐使用在线文件管理.
 
 <br />
 
