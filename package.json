@@ -12,18 +12,6 @@
   "author": "Suwings",
   "readmeFilename": "README.md",
   "license": "MIT",
-  "contributors": [
-    "Suwings",
-    "huangsijun17",
-    "Shuazijun",
-    "pppploi8",
-    "HonokaClub",
-    "lupohan44",
-    "Jecvay",
-    "RimuruChan",
-    "Rabbit0w0",
-    "SaigyoujiYuyuko233"
-  ],
   "dependencies": {
     "@wwa/statvfs": "^1.1.8",
     "body-parser": "^1.17.2",

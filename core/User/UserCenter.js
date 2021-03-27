@@ -89,12 +89,6 @@ class UserCenter {
         falsecb && falsecb();
         return false;
       }
-
-      // 一般模式 供ftp 等登录
-      if (notSafeLogin && loginUser.isPassword(password)) {
-        truecb && truecb(loginUser);
-        return true;
-      }
     }
     falsecb && falsecb();
     return false;

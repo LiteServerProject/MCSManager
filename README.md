@@ -30,9 +30,7 @@ LiteServer Project ❤ MCSManager
 
 运行环境
 -----------
-
 推荐 `Node 10.16.0` 以上，无需数据库和更改任何系统配置，开箱即可运行。
-
 
 <br />
 
@@ -110,7 +108,7 @@ Linux 下面板如何后台运行？ | [参考方法](https://github.com/Suwings
 浏览器兼容性
 -----------
 - `ECMAScript 5` 标准
-- `IE 10+` `Chrome` `Firefox` `Safari` `Opera` 等现代主流浏览器
+- `IE 11+` `Chrome` `Firefox` `Safari` `Opera` 等现代主流浏览器
 
 **例外:** 文件在线管理界面需要 `IE 11+` 
 
@@ -193,7 +191,9 @@ server {
 
 问题报告
 -----------
-欢迎各位发现任何 BUG 及时反馈给我，必当及时修复。
+欢迎发现任何 BUG 及时反馈，必当及时修复。
+
+若发现严重安全漏洞又不便公开发布，请发送邮件至: Suwings@outlook.com，安全问题修复后将在代码中附加漏洞发现者姓名。
 
 <br />
 
