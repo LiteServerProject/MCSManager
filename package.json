@@ -3,6 +3,7 @@
   "version": "8.6.15",
   "description": "A simple Minecraft server web panel",
   "Keywords": [
+    "LiteServerProject",
     "MCSManager",
     "Minecraft",
     "MinecraftServerManager",
@@ -40,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Suwings/MCSManager"
+    "url": "https://github.com/LiteServerProject/MCSManager"
   },
   "scripts": {
     "start": "node app.js",

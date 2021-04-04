@@ -1,9 +1,5 @@
-/*
- * @Author: Copyright(c) 2020 Suwings
- * @Date: 2020-10-08 13:28:28
- * @LastEditTime: 2021-03-13 13:15:33
- * @Description: 版本发行说明文件
- */
+// 版本发行说明文件
+
 const os = require("os");
 
 //前端显示版本

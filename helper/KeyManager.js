@@ -1,9 +1,5 @@
-/*
- * @Author: Copyright(c) 2020 Suwings
- * @Date: 2020-10-08 13:28:28
- * @LastEditTime: 2021-02-12 12:02:24
- * @Description: 身份验证
- */
+// 身份验证
+
 const userCenter = require("../model/UserModel").userCenter();
 const permission = require("./Permission");
 

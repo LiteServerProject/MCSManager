@@ -1,16 +1,10 @@
-/*
- * @Author: Copyright(c) 2020 Suwings
- * @Date: 2020-10-08 13:28:28
- * @LastEditTime: 2021-02-12 12:20:18
- * @Description:
- */
 const ServerManager = require("../core/Process/ServerCenter");
 const fs = require("fs");
 const fsextra = require("fs-extra");
 const pathm = require("path");
 
-// 事实上，Node.js 的缓存机制可以间接的到达单列模式的目的
-var onlyServerManager = new ServerManager();
+// 事实上，Node.js 的缓存机制可以间接的到达单例模式的目的
+const onlyServerManager = new ServerManager();
 // module.exports.ServerManager = onlyServerManager;
 function getServerDir(serverName) {
   return "./server/server_core/" + serverName + "/";
@@ -24,14 +18,18 @@ module.exports.ServerManager = () => {
 
 //后来维护添加的 优先创建根目录
 module.exports.createServerDir = (serverName, cwd) => {
-  if (cwd == "" || cwd == "<默认标准位置>") cwd = getServerDir(serverName);
+  if (cwd == "" || cwd == "<默认标准位置>") {
+    cwd = getServerDir(serverName);
+  }
   if (!fs.existsSync(cwd)) {
     fsextra.mkdirsSync(cwd);
   }
 };
 
 module.exports.createServer = (serverName, config) => {
-  if (config.cwd == "" || config.cwd == "<默认标准位置>") config.cwd = getServerDir(serverName);
+  if (config.cwd == "" || config.cwd == "<默认标准位置>") {
+    config.cwd = getServerDir(serverName);
+  }
   if (!fs.existsSync(config.cwd)) {
     fsextra.mkdirsSync(config.cwd);
   }
