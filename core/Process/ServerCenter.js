@@ -118,10 +118,11 @@ class ServerManager extends EventEmitter {
         msg: data
       });
 
-      const event = ParseConsoleText(data);
-      if (event) {
-        this.emit('mcevent', event);
-      }
+      const inText = data.toString().trim();
+      inText.replace('\r', '').split('\n').forEach((line) => {
+        const event = ParseConsoleText(line);
+        console.log(`${line}\n${JSON.stringify(event, null, 2)}`)
+      })
     });
 
     //监听退出
