@@ -136,6 +136,7 @@ setInterval(() => {
     }
   }
 }, MCSERVER.localProperty.console_send_times);
+
 //控制台标准输出流
 serverModel.ServerManager().on("console", (data) => {
   // 加入到缓冲区

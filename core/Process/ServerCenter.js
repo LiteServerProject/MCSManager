@@ -2,6 +2,7 @@ const MinecraftServer = require("./Mcserver");
 const EventEmitter = require("events");
 const fs = require("fs-extra");
 const mcPingProtocol = require("../../helper/MCPingProtocol");
+const ParseConsoleText = require('../../helper/ChatAPI');
 
 const BASE_SERVER_DIR = "./server/";
 
@@ -107,15 +108,22 @@ class ServerManager extends EventEmitter {
   }
 
   _bindEvent(name) {
-    let server = this.serverList[name];
-    //监听控制台
+    const server = this.serverList[name];
+
+    // 监听控制台, 组装后在 route/websocket/console.js 中处理
     server.on("console", (data) => {
       this.emit("console", {
         serverName: name,
         command: "CONSOLE",
         msg: data
       });
+
+      const event = ParseConsoleText(data);
+      if (event) {
+        this.emit('mcevent', event);
+      }
     });
+
     //监听退出
     server.on("exit", (code) => {
       this.emit("exit", {
@@ -124,6 +132,7 @@ class ServerManager extends EventEmitter {
         msg: code
       });
     });
+
     server.on("open", (server) => {
       this.emit("open", {
         serverName: name,
@@ -131,6 +140,7 @@ class ServerManager extends EventEmitter {
         msg: server
       });
     });
+
     server.on("error", (err) => {
       this.emit("open", {
         serverName: name,

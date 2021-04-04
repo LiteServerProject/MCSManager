@@ -308,9 +308,10 @@ class ServerProcess extends EventEmitter {
       throw new Error("服务端进程启动失败，建议检查启动命令与参数是否正确");
     }
 
-    // 输出事件的传递
+    // 输出事件的传递, 解码后在 core/Process/ServerCenter.js 中处理
     this.process.stdout.on("data", (data) => this.emit("console", iconv.decode(data, this.dataModel.oe)));
     this.process.stderr.on("data", (data) => this.emit("console", iconv.decode(data, this.dataModel.oe)));
+
     this.process.on("exit", (code) => {
       this.emit("exit", code);
       this.stop();
