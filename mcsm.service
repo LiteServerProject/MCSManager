@@ -1,0 +1,12 @@
+[Unit]
+Description=MCSManager
+
+[Service]
+ExecStart=/usr/bin/node /opt/MCSManager/app.js
+Restart=always
+Environment=PATH=/usr/bin:/usr/local/bin:/usr/local/node/bin:/opt/jre/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/opt/MCSManager/
+
+[Install]
+WantedBy=multi-user.target
